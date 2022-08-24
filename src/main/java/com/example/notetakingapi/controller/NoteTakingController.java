@@ -37,11 +37,19 @@ public class NoteTakingController {
     }
 
     @GetMapping("/notes/{userId}")
-    public List<Note> getAllNotes(@PathVariable("userId") String id){
+    public List<Note> getAllNotes(@PathVariable("userId") String id) {
 
         Long userId = Long.parseLong(id);
 
         return userServiceInterface.getUserNoteList(userId);
+    }
+
+    @PutMapping("/edit/{noteId}")
+    public Note updateNote(@PathVariable("noteId") String id, @RequestBody Note note) {
+        Long noteId = Long.parseLong(id);
+
+
+        return userServiceInterface.updateNote(noteId, note);
     }
 
 
