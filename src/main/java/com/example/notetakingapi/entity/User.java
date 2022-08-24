@@ -15,8 +15,8 @@ import java.util.List;
 public class User {
 
     @Id
-    @SequenceGenerator(name = "note_sequence", sequenceName = "note_sequence")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "note_sequence")
+    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     private Long id;
     private String emailAddress;
     private String password;

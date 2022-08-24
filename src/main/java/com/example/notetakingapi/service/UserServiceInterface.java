@@ -12,5 +12,6 @@ public interface UserServiceInterface {
 
     public User addUser(User user);
     public String validateUser(String email,String password);
+    public Note addNote(Note note, Long userId);
     public List<Note> getUserNoteList(Long id);
 }

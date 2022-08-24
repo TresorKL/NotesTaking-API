@@ -2,6 +2,7 @@ package com.example.notetakingapi.service;
 
 import com.example.notetakingapi.entity.Note;
 import com.example.notetakingapi.entity.User;
+import com.example.notetakingapi.repository.NoteRepository;
 import com.example.notetakingapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ public class UserServiceImpl implements UserServiceInterface {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    NoteRepository noteRepository;
 
     @Override
     public User addUser(User user) {
@@ -32,7 +36,32 @@ public class UserServiceImpl implements UserServiceInterface {
     }
 
     @Override
+    public Note addNote(Note note, Long userId) {
+
+
+        noteRepository.save(note);
+
+        User user = userRepository.findById(userId).get();
+
+        List<Note>noteList= user.getNoteList();
+
+        noteList.add(note);
+
+        user.setNoteList(noteList);
+
+        // update user
+        userRepository.save(user);
+
+        List<Note>newNoteList= user.getNoteList();
+
+        return newNoteList.get(newNoteList.size()-1);
+
+    }
+
+    @Override
     public List<Note> getUserNoteList(Long id) {
-        return null;
+
+        User user = userRepository.findById(id).get();
+        return user.getNoteList();
     }
 }
