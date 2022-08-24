@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserServiceInterface {
 
@@ -20,7 +21,14 @@ public class UserServiceImpl implements UserServiceInterface {
 
     @Override
     public String validateUser(String email, String password) {
-        return null;
+        String idStr = "null";
+        User user = userRepository.loginUser(email, password);
+
+        if (user != null) {
+            idStr = String.valueOf(user.getId());
+        }
+
+        return idStr;
     }
 
     @Override

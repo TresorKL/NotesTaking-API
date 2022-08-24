@@ -1,11 +1,10 @@
 package com.example.notetakingapi.controller;
 
 import com.example.notetakingapi.entity.User;
+import com.example.notetakingapi.loginbody.LoginBody;
 import com.example.notetakingapi.service.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class NoteTakingController {
@@ -14,10 +13,18 @@ public class NoteTakingController {
     UserServiceInterface userServiceInterface;
 
     @PostMapping("/user")
-    public User createUser(@RequestBody User user){
-
-
+    public User createUser(@RequestBody User user) {
 
         return userServiceInterface.addUser(user);
     }
+
+    @PostMapping("/login")
+    public String loginUser(@RequestBody LoginBody loginBody) {
+
+        String emailAddress = loginBody.getEmailAddress();
+        String password = loginBody.getPassword();
+        return userServiceInterface.validateUser(emailAddress,password);
+    }
+
+
 }
