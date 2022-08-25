@@ -1,0 +1,71 @@
+1. Create User API
+-----------------------------------------------
+Method : POST
+Body: User object (Json Format)
+link(path): http://localhost:8080/user
+
+demo:
+{
+	"emailAddress":"david@gmail.com",
+	"password":"davido2003"
+}
+
+
+
+-----------------------------------------------
+2. Login User API
+-----------------------------------------------
+Method : POST
+Body: LoginBody object (Json Format)
+link(path): http://localhost:8080/login
+
+demo:
+{
+	"emailAddress":"david@gmail.com",
+	"password":"davido2003"
+}
+
+
+-----------------------------------------------
+3. Create note API
+-----------------------------------------------
+Method : POST
+Body: Note object (Json Format)
+link(path): http://localhost:8080/note/{userId}
+
+demo:
+{
+	"title":"Are you happy",
+	"noteBody":"Don't even try it now cause.."
+}
+
+
+-----------------------------------------------
+4. Get all notes API
+-----------------------------------------------
+Method : GET
+Body: none
+link(path): http://localhost:8080/notes/{userId}
+
+
+
+-----------------------------------------------
+5. Get all notes API
+-----------------------------------------------
+Method: PUT
+Body: Note Object (JSon Format)
+link(path): http://localhost:8080/edit/{noteId}
+
+demo:
+{
+  "title": "Change new title"
+}
+
+-----------------------------------------------
+6. Search notes API
+-----------------------------------------------
+Method: GET
+Body: none
+link(path): http://localhost:8080/search/{userId}/{titleString}
+
+comment: The API search notes by the titles
