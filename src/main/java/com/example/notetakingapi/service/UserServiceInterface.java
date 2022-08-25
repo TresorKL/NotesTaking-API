@@ -15,4 +15,5 @@ public interface UserServiceInterface {
     public Note addNote(Note note, Long userId);
     public List<Note> getUserNoteList(Long id);
     public Note updateNote(Long id, Note note);
+    public List<Note> searchNotes(Long id, String title);
 }

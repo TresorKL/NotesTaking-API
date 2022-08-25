@@ -7,6 +7,7 @@ import com.example.notetakingapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -80,5 +81,23 @@ public class UserServiceImpl implements UserServiceInterface {
 
 
         return noteRepository.save(dbNote);
+    }
+
+    @Override
+    public List<Note> searchNotes(Long id, String title) {
+
+        List<Note>noteList=new ArrayList<>();
+        User user = userRepository.findById(id).get();
+
+        for(int i=0; i< user.getNoteList().size();i++){
+
+            String noteTitle=user.getNoteList().get(i).getTitle().toLowerCase();
+            if(noteTitle.contains(title.toLowerCase())){
+                noteList.add(user.getNoteList().get(i));
+            }
+
+        }
+
+        return noteList;
     }
 }

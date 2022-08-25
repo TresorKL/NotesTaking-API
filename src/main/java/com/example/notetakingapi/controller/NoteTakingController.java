@@ -48,8 +48,15 @@ public class NoteTakingController {
     public Note updateNote(@PathVariable("noteId") String id, @RequestBody Note note) {
         Long noteId = Long.parseLong(id);
 
-
         return userServiceInterface.updateNote(noteId, note);
+    }
+
+    @GetMapping("/search/{userId}/{titleStr}")
+    public List<Note> searchNotes(@PathVariable("userId") String id, @PathVariable("titleStr") String title ){
+
+        Long userId= Long.parseLong(id);
+
+        return userServiceInterface.searchNotes(userId,title);
     }
 
 
