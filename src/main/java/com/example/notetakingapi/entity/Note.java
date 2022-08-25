@@ -30,6 +30,7 @@ public class Note {
     private String title;
     @Column(length=550)
     private String noteBody;
+    private String noteBackgroundColor;
 
 
 

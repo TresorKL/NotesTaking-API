@@ -77,6 +77,9 @@ public class UserServiceImpl implements UserServiceInterface {
         if (note.getNoteBody() != null && !note.getNoteBody().equals("")) {
             dbNote.setNoteBody(note.getNoteBody());
         }
+        if(note.getNoteBackgroundColor()!= null && !note.getNoteBody().equals("")){
+            dbNote.setNoteBackgroundColor(note.getNoteBackgroundColor());
+        }
 
 
 
