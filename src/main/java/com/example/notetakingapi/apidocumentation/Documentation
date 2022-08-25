@@ -69,3 +69,12 @@ Body: none
 link(path): http://localhost:8080/search/{userId}/{titleString}
 
 comment: The API search notes by the titles
+
+
+-----------------------------------------------
+6. Delete note API
+-----------------------------------------------
+
+Method: DELETE
+Body: none
+link(path): http://localhost:8080/delete/{noteId}
