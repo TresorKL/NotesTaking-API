@@ -59,5 +59,12 @@ public class NoteTakingController {
         return userServiceInterface.searchNotes(userId,title);
     }
 
+    @DeleteMapping("/delete/{noteId}")
+    public String deleteNote(@PathVariable("noteId") String id){
+
+        Long noteId = Long.parseLong(id);
+        return userServiceInterface.deleteNote(noteId);
+    }
+
 
 }

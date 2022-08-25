@@ -100,4 +100,11 @@ public class UserServiceImpl implements UserServiceInterface {
 
         return noteList;
     }
+
+    @Override
+    public String deleteNote(Long id) {
+        noteRepository.deleteById(id);
+
+        return "note deleted";
+    }
 }
